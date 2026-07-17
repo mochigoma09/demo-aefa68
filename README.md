@@ -1,2 +1,3 @@
 # demo-aefa68
-Auto generated demo site for （株）若月工務店
+
+AIによって自動生成された （株）若月工務店 様向けのデモサイトです。
