@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- ============================================================
+     head.html — 全デモ共通の <head> 不変ブロック（SEO）。
+     各デモの <head> に必ず含める。{{...}} は案件情報で差し替え。
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>（株）若月工務店｜工務店</title>
+<meta name="description" content="中野区で信頼と実績の若月工務店。地域に根ざした職人の技術で、新築・リフォーム・増改築を丁寧にサポート。理想の住まいを共に育みます。">
+<link rel="canonical" href="https://mochigoma09.github.io/demo-aefa68/">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="（株）若月工務店">
+<meta property="og:title" content="（株）若月工務店｜工務店">
+<meta property="og:description" content="中野区で信頼と実績の若月工務店。地域に根ざした職人の技術で、新築・リフォーム・増改築を丁寧にサポート。理想の住まいを共に育みます。">
+<meta property="og:url" content="https://mochigoma09.github.io/demo-aefa68/">
+<meta property="og:image" content="">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="（株）若月工務店｜工務店">
+<meta name="twitter:description" content="中野区で信頼と実績の若月工務店。地域に根ざした職人の技術で、新築・リフォーム・増改築を丁寧にサポート。理想の住まいを共に育みます。">
+<meta name="twitter:image" content="">
+
+<!-- 構造化データ（GeneralContractor は preset の schema.orgサブタイプ。住所/電話は実値へ） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://mochigoma09.github.io/demo-aefa68/#org", "name": "（株）若月工務店", "url": "https://mochigoma09.github.io/demo-aefa68/" },
+    { "@type": "WebSite", "@id": "https://mochigoma09.github.io/demo-aefa68/#site", "url": "https://mochigoma09.github.io/demo-aefa68/", "name": "（株）若月工務店", "publisher": { "@id": "https://mochigoma09.github.io/demo-aefa68/#org" } },
+    { "@type": "GeneralContractor", "@id": "https://mochigoma09.github.io/demo-aefa68/#biz", "name": "（株）若月工務店", "url": "https://mochigoma09.github.io/demo-aefa68/", "telephone": "03-3953-1166", "address": { "@type": "PostalAddress", "addressCountry": "JP", "addressRegion": "東京都", "addressLocality": "中野区", "streetAddress": "江原町２丁目３１−７ 若月工務店若月ビル" } }
+  ]
+}
+</script>
+
+<!-- フォント（コンセプトで差し替え） / 土台CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   base.css — 全デモ共通の「不変の土台」（品質の担保。見た目の個性はここに持たせない）
+   各デモHTMLは必ずこれを読み込み、レイアウト/世界観は自由に作る。
+   固定するのは：リセット / トークンの“契約”（変数名）/ a11y / 再利用部品 のみ。
+   ============================================================ */
+
+/* --- デザイントークンの契約（値は案件コンセプトで :root を上書きする） --- */
+:root {
+  --color-primary: #1f3a5f;
+  --color-accent:  #b89150;
+  --color-text:    #2a2e35;
+  --color-bg:      #ffffff;
+  --color-surface: #f5f7fa;
+  --color-line:    rgba(0, 0, 0, 0.12);
+  --font-heading:  "Noto Serif JP", serif;
+  --font-body:     system-ui, -apple-system, "Noto Sans JP", sans-serif;
+  --radius:        14px;
+  --container:     1120px;
+}
+
+/* --- reset（wp-theme-starter から移植） --- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { min-height: 100vh; font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+img, svg, video, picture { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; background: none; border: 0; cursor: pointer; }
+h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.4; }
+ul, ol { list-style: none; padding: 0; }
+
+/* --- a11y（不変） --- */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
+
+/* --- 再利用部品（配色/形はトークン依存＝案件で変わる。構造だけ共通） --- */
+.l-wrapper { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: 20px; }
+
+.c-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 32px; font-weight: 700; border-radius: 999px; color: #fff; background: var(--color-primary); transition: transform .25s, box-shadow .25s; }
+.c-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.15); }
+
+/* 全画面ハンバーガー（1024px以下） */
+.c-hamburger { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; position: relative; z-index: 1001; }
+.c-hamburger__bars, .c-hamburger__bars::before, .c-hamburger__bars::after { content: ""; display: block; width: 24px; height: 2px; background: var(--color-text); transition: transform .3s, opacity .3s; }
+.c-hamburger__bars { position: relative; }
+.c-hamburger__bars::before { position: absolute; top: -7px; left: 0; }
+.c-hamburger__bars::after  { position: absolute; top: 7px;  left: 0; }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars { background: transparent; }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars::before { transform: translateY(7px) rotate(45deg); }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars::after  { transform: translateY(-7px) rotate(-45deg); }
+.c-nav { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(12px); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; font-family: var(--font-heading); font-size: 1.2rem; }
+.c-nav.is-open { opacity: 1; visibility: visible; }
+@media (min-width: 1025px) {
+  .c-hamburger { display: none; }
+  .c-nav { position: static; flex-direction: row; gap: 32px; background: none; backdrop-filter: none; opacity: 1; visibility: visible; font-size: 1rem; }
+}
+
+/* スクロールリビール（nav.jsがJSで付与する。JS無効環境では何も付かず常に表示） */
+.js-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.js-reveal.is-inview { opacity: 1; transform: none; }
+
+/* 追従フローティングCTA（1024px以下） */
+.c-floating-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 800; display: flex; justify-content: center; padding: 0 16px 14px; pointer-events: none; }
+.c-floating-cta .c-btn { pointer-events: auto; width: 100%; max-width: 520px; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+body { padding-bottom: 84px; } /* CTA分の余白 */
+@media (min-width: 1025px) { .c-floating-cta { display: none; } body { padding-bottom: 0; } }
+
+</style>
+<style>
+:root {
+  --color-primary: #4A6D63;
+  --color-accent: #B07C64;
+  --color-surface: #F5F3F0;
+  --color-text: #2C2C2C;
+  --font-heading: 'Shippori Mincho B1', serif;
+  --font-body: 'Noto Sans JP', sans-serif;
+  --radius: 2px;
+  --space-xl: clamp(5rem, 10vw, 8rem);
+  --space-lg: clamp(3rem, 6vw, 5rem);
+}
+
+/* Base Overrides & Layout */
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+.u-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.p-hr {
+  border: none;
+  border-top: 1px solid var(--color-primary);
+  opacity: 0.2;
+  margin: var(--space-lg) 0;
+}
+
+/* Header */
+.p-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1100;
+  background: rgba(245, 243, 240, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.p-header__logo {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+}
+
+/* Hero Section */
+.p-hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: var(--space-xl);
+}
+
+.p-hero__content {
+  grid-column: 2 / 7;
+  z-index: 2;
+}
+
+.p-hero__title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.p-hero__title span {
+  display: block;
+  font-size: 0.3em;
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.p-hero__image {
+  grid-column: 6 / 13;
+  position: relative;
+  height: 80vh;
+}
+
+.p-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.2);
+}
+
+@media (max-width: 1024px) {
+  .p-hero { display: block; padding-inline: 20px; }
+  .p-hero__content { margin-bottom: 3rem; }
+  .p-hero__image { height: 50vh; width: calc(100% + 40px); margin-left: -20px; }
+}
+
+/* Works Section */
+.p-works__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.p-works__item {
+  position: relative;
+  overflow: hidden;
+}
+
+.p-works__item:nth-child(1) { grid-column: 1 / 8; aspect-ratio: 16/9; }
+.p-works__item:nth-child(2) { grid-column: 8 / 13; aspect-ratio: 4/5; margin-top: var(--space-lg); }
+.p-works__item:nth-child(3) { grid-column: 2 / 6; aspect-ratio: 1/1; margin-top: -4rem; }
+.p-works__item:nth-child(4) { grid-column: 6 / 12; aspect-ratio: 3/2; }
+
+.p-works__meta {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .p-works__grid { display: block; }
+  .p-works__item { margin-bottom: 3rem !important; }
+}
+
+/* Flow Section */
+.p-flow__container {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: flex-start;
+}
+
+.p-flow__lead {
+  flex: 0 0 300px;
+  position: sticky;
+  top: 120px;
+}
+
+.p-flow__list {
+  flex: 1;
+  border-left: 1px solid var(--color-line);
+  padding-left: var(--space-lg);
+}
+
+.p-flow__step {
+  margin-bottom: var(--space-lg);
+  position: relative;
+}
+
+.p-flow__step::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--space-lg) * -1 - 4px);
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+}
+
+.p-flow__num {
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.p-flow__step-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .p-flow__container { flex-direction: column; }
+  .p-flow__lead { position: static; flex: none; margin-bottom: 3rem; }
+}
+
+/* Voice Section */
+.p-voice__card {
+  background: #fff;
+  padding: var(--space-lg);
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  position: relative;
+}
+
+.p-voice__card::after {
+  content: "“";
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 8rem;
+  font-family: var(--font-heading);
+  color: var(--color-surface);
+  line-height: 1;
+  z-index: -1;
+}
+
+.p-voice__text {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.p-voice__author {
+  font-weight: 700;
+  text-align: right;
+  border-top: 1px solid var(--color-surface);
+  padding-top: 1rem;
+}
+
+/* Company Section */
+.p-company__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.p-company__table th, .p-company__table td {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--color-line);
+  text-align: left;
+}
+
+.p-company__table th {
+  width: 200px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+/* Contact Section */
+.p-contact {
+  background: var(--color-primary);
+  color: #fff;
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+
+.p-contact__title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 3rem;
+}
+
+/* Typography Helpers */
+.c-section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: var(--space-lg);
+}
+
+.c-section-title span {
+  display: block;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  color: var(--color-accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+}
+</style>
+<style>:root{--color-primary:#4A6D63;--color-accent:#B07C64;--color-surface:#F5F3F0;--color-text:#2C2C2C;--font-heading:'Shippori Mincho B1', serif;--font-body:'Noto Sans JP', sans-serif;--radius:2px;}</style>
+</head>
+<body>
+
+<h1 class="sr-only">中野区の注文住宅・リフォームなら若月工務店</h1>
+
+<header class="p-header">
+  <div class="p-header__logo">株式会社 若月工務店</div>
+  <button class="c-hamburger js-nav-toggle" aria-controls="nav" aria-expanded="false" aria-label="メニューを開閉する">
+    <span class="c-hamburger__bars"></span>
+  </button>
+</header>
+
+<nav class="c-nav" id="nav">
+  <a href="#hero">Top</a>
+  <a href="#works">Works</a>
+  <a href="#flow">Flow</a>
+  <a href="#company">Company</a>
+  <a href="#voice">Voice</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<main>
+  <!-- Hero -->
+  <section class="p-hero" data-section="hero" id="hero">
+    <div class="p-hero__content">
+      <h2 class="p-hero__title">
+        <span>NAKANO CRAFTSMANSHIP</span>
+        中野の住まいを<br>育む、職人の手。
+      </h2>
+      <p>私たちは、この街の風景の一部となるような、<br>時を重ねるほどに愛着のわく住まいをつくり続けています。</p>
+      <div style="margin-top: 3rem;">
+        <a href="#contact" class="c-btn">ご相談を承る</a>
+      </div>
+    </div>
+    <div class="p-hero__image">
+      <img src="https://images.unsplash.com/photo-1773841040189-d964d2cccc9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwxfHxqYXBhbmVzZSUyMGNyYWZ0c21hbiUyMGludGVyaW9yJTIwZGV0YWlsfGVufDB8MHx8fDE3ODQzMjQ5NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="職人の手仕事による内装詳細">
+    </div>
+  </section>
+
+  <!-- Works -->
+  <section class="l-wrapper" style="padding-top: var(--space-xl);" data-section="works" id="works">
+    <h2 class="c-section-title">
+      <span>SELECTED WORKS</span>
+      育まれる住まい
+    </h2>
+    <div class="p-works__grid">
+      <div class="p-works__item">
+        <img src="https://images.unsplash.com/photo-1632829882891-5047ccc421bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwxfHxicmlnaHQlMjBsaXZpbmclMjByb29tJTIwbmF0dXJhbCUyMGxpZ2h0fGVufDB8MHx8fDE3ODQzMjQ5Nzd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="光が差し込むリビング">
+        <div class="p-works__meta">
+          <span>中野区 E邸</span>
+          <span>新築注文住宅</span>
+        </div>
+      </div>
+      <div class="p-works__item">
+        <img src="https://images.unsplash.com/photo-1609558546186-46b663a9aff6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwyfHxqYXBhbmVzZSUyMGNyYWZ0c21hbiUyMGludGVyaW9yJTIwZGV0YWlsfGVufDB8MHx8fDE3ODQzMjQ5NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="木材のディテール">
+        <div class="p-works__meta">
+          <span>杉並区 S邸</span>
+          <span>リノベーション</span>
+        </div>
+      </div>
+      <div class="p-works__item">
+        <img src="https://images.unsplash.com/photo-1613914153139-79eafdf15d23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwaG9tZSUyMGludGVyaW9yJTIwd29vZHxlbnwwfDB8fHwxNzg0MzI0OTc3fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="木の温もりを感じるインテリア">
+        <div class="p-works__meta">
+          <span>中野区 K邸</span>
+          <span>増改築</span>
+        </div>
+      </div>
+      <div class="p-works__item">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwyfHxicmlnaHQlMjBsaXZpbmclMjByb29tJTIwbmF0dXJhbCUyMGxpZ2h0fGVufDB8MHx8fDE3ODQzMjQ5Nzd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="開放感のあるLDK">
+        <div class="p-works__meta">
+          <span>練馬区 T邸</span>
+          <span>新築注文住宅</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="p-hr l-wrapper">
+
+  <!-- Flow -->
+  <section class="l-wrapper" style="padding: var(--space-xl) 20px;" data-section="flow" id="flow">
+    <div class="p-flow__container">
+      <div class="p-flow__lead">
+        <h2 class="c-section-title">
+          <span>PROCESS</span>
+          対話から始まる<br>家づくり
+        </h2>
+        <p>お客様の理想を、職人の確かな技術で形にします。私たちは完成して終わりではなく、そこから始まる暮らしに寄り添います。</p>
+      </div>
+      <div class="p-flow__list">
+        <div class="p-flow__step">
+          <span class="p-flow__num">01</span>
+          <h3 class="p-flow__step-title">丁寧なヒアリング</h3>
+          <p>まずはあなたの「暮らしの願い」をお聞かせください。土地の特性やライフスタイルに合わせた最適なプランをご提案します。</p>
+        </div>
+        <div class="p-flow__step">
+          <span class="p-flow__num">02</span>
+          <h3 class="p-flow__step-title">職人による設計・施工</h3>
+          <p>自社の熟練職人が、一棟一棟心を込めて施工します。現場での細かな調整も、直接施工だからこそ柔軟に対応可能です。</p>
+        </div>
+        <div class="p-flow__step">
+          <span class="p-flow__num">03</span>
+          <h3 class="p-flow__step-title">永いお付き合い</h3>
+          <p>お引き渡し後も、地域の工務店として迅速なメンテナンス体制を整えています。住まいの成長を共に見守ります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voice -->
+  <section style="background: var(--color-surface); padding: var(--space-xl) 0;" data-section="voice" id="voice">
+    <div class="l-wrapper">
+      <h2 class="c-section-title">
+        <span>VOICE</span>
+        住まう人の声
+      </h2>
+      <div class="p-voice__card">
+        <p class="p-voice__text">「中野の古い家をリフォームしていただきました。職人さんのこだわりが細部まで感じられ、以前よりも家が好きになりました。何より、私たちの些細な要望にも誠実に応えてくださったのが嬉しかったです。」</p>
+        <p class="p-voice__author">中野区在住 A様</p>
+      </div>
+      <div class="p-voice__card" style="margin-right: auto; margin-left: 0;">
+        <p class="p-voice__text">「新築をお願いしましたが、こちらの工務店にお願いして本当に良かったです。木の香りが心地よく、冬でも暖かい。地域に根ざしているからこそ、この土地の気候に合わせた提案をしていただけました。」</p>
+        <p class="p-voice__author">中野区在住 M様</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company -->
+  <section class="l-wrapper" style="padding: var(--space-xl) 20px;" data-section="company" id="company">
+    <h2 class="c-section-title">
+      <span>COMPANY</span>
+      会社概要
+    </h2>
+    <table class="p-company__table">
+      <tr>
+        <th>社名</th>
+        <td>株式会社 若月工務店</td>
+      </tr>
+      <tr>
+        <th>所在地</th>
+        <td>〒165-0023 東京都中野区江原町２丁目３１−７ 若月工務店若月ビル</td>
+      </tr>
+      <tr>
+        <th>代表者</th>
+        <td>若月 幸一</td>
+      </tr>
+      <tr>
+        <th>建設業許可</th>
+        <td>東京都知事 許可（般-4）第XXXXX号<br><small>※一定金額以上の工事には建設業許可を保持し、法令を遵守して施工いたします。</small></td>
+      </tr>
+      <tr>
+        <th>事業内容</th>
+        <td>注文住宅の設計・施工、増改築、リフォーム、耐震補強工事</td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><a href="tel:03-3953-1166">03-3953-1166</a></td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- Contact -->
+  <section class="p-contact" data-section="contact" id="contact">
+    <div class="l-wrapper">
+      <h2 class="p-contact__title">理想の住まいを、<br>共に育みませんか。</h2>
+      <p style="margin-bottom: 3rem; opacity: 0.9;">新築、リフォーム、小さな修繕のご相談まで。<br>中野の街で、お待ちしております。</p>
+      <a href="#" class="c-btn" style="background: #fff; color: var(--color-primary);">お問い合わせフォームへ</a>
+      <div style="margin-top: 2rem;">
+        <a href="tel:03-3953-1166" style="font-size: 1.5rem; font-family: var(--font-heading);">TEL 03-3953-1166</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="padding: 40px 20px; text-align: center; font-size: 0.8rem; opacity: 0.6;">
+  <p>&copy; <span id="y"></span> Wakatsuki Koumuten Co., Ltd. All Rights Reserved.</p>
+</footer>
+
+<div class="c-floating-cta">
+  <a href="#" class="c-btn">無料相談・見積もり依頼</a>
+</div>
+
+<script>
+/* nav.js — 全画面ハンバーガーの開閉（背後スクロールロック）。全デモ共通の不変挙動。 */
+(function () {
+  var t = document.querySelector('.js-nav-toggle');
+  var n = document.getElementById('nav');
+  if (t && n) {
+    t.addEventListener('click', function () {
+      var open = t.getAttribute('aria-expanded') === 'true';
+      t.setAttribute('aria-expanded', String(!open));
+      n.classList.toggle('is-open', !open);
+      document.body.style.overflow = open ? '' : 'hidden';
+    });
+    n.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { t.setAttribute('aria-expanded', 'false'); n.classList.remove('is-open'); document.body.style.overflow = ''; }
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { t.setAttribute('aria-expanded', 'false'); n.classList.remove('is-open'); document.body.style.overflow = ''; } });
+  }
+  var y = document.getElementById('y'); if (y) y.textContent = new Date().getFullYear();
+
+  /* スクロールリビール（抑制的モーション）：各 data-section の直下要素を
+     ふわっと表示。クラスはJSで付与するのでJS無効環境では常に見える。
+     prefers-reduced-motion は base.css 側の全体無効化が効く。 */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-inview'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    document.querySelectorAll('[data-section]').forEach(function (sec) {
+      var kids = Array.prototype.slice.call(sec.children);
+      kids.forEach(function (el, i) {
+        el.classList.add('js-reveal');
+        el.style.transitionDelay = Math.min(i * 90, 360) + 'ms';
+        io.observe(el);
+      });
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
